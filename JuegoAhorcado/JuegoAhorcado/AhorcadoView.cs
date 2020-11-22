@@ -10,11 +10,14 @@ using System.Windows.Forms;
 
 namespace JuegoAhorcado
 {
-    public partial class AhorcadoView : Form
+    public partial class ahorcadoView : Form
     {
-        public AhorcadoView()
+        
+        public ahorcadoView()
         {
             InitializeComponent();
+            panel.Controls.Add(new MainControl());
+            
         }
 
         private void exitPictureBox_Click(object sender, EventArgs e)
@@ -24,6 +27,27 @@ namespace JuegoAhorcado
             {
                 Application.Exit();
             }
+        }
+
+        private void backBox_Click(object sender, EventArgs e)
+        {
+            MainControl mainControl = new MainControl();
+            showControl(mainControl);
+        }
+
+        public void showControl(Control control) {
+            this.panel.Controls.Clear();
+
+            control.Dock = DockStyle.Top;
+            control.BringToFront();
+            control.Focus();
+
+            this.panel.Controls.Add(control);
+        }
+
+        private void retryPictureBox_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
